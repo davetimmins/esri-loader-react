@@ -6,9 +6,7 @@ A React component wrapper around [esri-loader](https://github.com/tomwayson/esri
 
 ### Usage
 
-To add to your site first make sure you have the dependencies installed, we assume you are using react and esri-loader.
-
-Then do `npm install esri-loader-react --save`
+`npm install react esri-loader esri-loader-react --save`
 
 Mount the loader component to preload the Esri JS API when you will need it in your app.
 You can pass in the options that get forwarded to the [esri-loader](https://github.com/tomwayson/esri-loader) `bootstrap` function
@@ -79,6 +77,7 @@ import {dojoRequire} from "esri-loader";
 ### Build locally
 
 `npm install`
+
 `npm run build`
 
 ### Examples
