@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/esri-loader-react.svg)](https://www.npmjs.com/package/esri-loader-react)
 
-A React component wrapper around esri-loader
+A React component wrapper around [esri-loader](https://github.com/tomwayson/esri-loader)
 
 ### Usage
 
