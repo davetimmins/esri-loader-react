@@ -1,7 +1,14 @@
 # esri-loader-react
+
+[![npm](https://img.shields.io/npm/v/esri-loader-react.svg)](https://www.npmjs.com/package/esri-loader-react)
+
 A React component wrapper around esri-loader
 
 ### Usage
+
+To add to your site first make sure you have the dependencies installed, we assume you are using react and esri-loader.
+
+Then do `npm install esri-loader-react --save`
 
 Mount the loader component to preload the Esri JS API when you will need it in your app.
 You can pass in the options that get forwarded to the [esri-loader](https://github.com/tomwayson/esri-loader) `bootstrap` function
