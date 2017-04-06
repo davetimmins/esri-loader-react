@@ -76,10 +76,10 @@ import {dojoRequire} from "esri-loader";
 
 ### Build locally
 
-`npm install`
-
-`npm run build`
+1. `npm install`
+2. `npm run build`
 
 ### Examples
 
-https://davetimmins.com/arcgis-react-redux-legend/
+* https://davetimmins.com/arcgis-react-redux-legend/
+* https://github.com/davetimmins/create-react-app-esri-loader/
