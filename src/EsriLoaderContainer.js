@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { bootstrap, isLoaded } from 'esri-loader';
 
 class EsriLoader extends React.PureComponent {
@@ -28,8 +29,8 @@ class EsriLoader extends React.PureComponent {
 }
 
 EsriLoader.propTypes = {
-  options: React.PropTypes.object,
-  ready: React.PropTypes.func
+  options: PropTypes.object,
+  ready: PropTypes.func
 };
 
 export default EsriLoader;
