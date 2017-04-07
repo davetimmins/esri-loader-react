@@ -1,6 +1,6 @@
 {
   "name": "esri-loader-react",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "A React component wrapper for esri-loader.",
   "author": "Dave Timmins <dwtimmins@outlook.com>",
   "license": "MIT",
