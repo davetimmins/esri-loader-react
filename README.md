@@ -6,7 +6,7 @@ A React component wrapper around [esri-loader](https://github.com/tomwayson/esri
 
 ### Usage
 
-`npm install react esri-loader esri-loader-react --save`
+`npm install react prop-types esri-loader esri-loader-react --save`
 
 Mount the loader component to preload the Esri JS API when you will need it in your app.
 You can pass in the options that get forwarded to the [esri-loader](https://github.com/tomwayson/esri-loader) `bootstrap` function

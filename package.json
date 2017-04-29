@@ -1,6 +1,6 @@
 {
   "name": "esri-loader-react",
-  "version": "0.3.0",
+  "version": "1.0.0",
   "description": "A React component wrapper for esri-loader.",
   "author": "Dave Timmins <dwtimmins@outlook.com>",
   "license": "MIT",
@@ -22,19 +22,19 @@
   },
   "devDependencies": {
     "babel-core": "^6.24.1",
-    "babel-loader": "^6.4.1",
+    "babel-loader": "^7.0.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
-    "esri-loader": "^0.3.0",
-    "prop-types": "^15.5.1",
-    "react": "^15.5.1",
-    "webpack": "^2.3.3",
+    "esri-loader": "^1.0.0",
+    "prop-types": "^15.5.8",
+    "react": "^15.5.4",
+    "webpack": "^2.4.1",
     "webpack-node-externals": "^1.5.4"
   },
   "peerDependencies": {
-    "esri-loader": "^0.3.0",
-    "react": "^15.5.1",
-    "prop-types": "^15.5.1"
+    "esri-loader": "^1.0.0",
+    "react": "^15.5.4",
+    "prop-types": "^15.5.8"
   }
 }
