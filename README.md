@@ -83,3 +83,4 @@ import {dojoRequire} from "esri-loader";
 
 * https://davetimmins.com/arcgis-react-redux-legend/
 * https://github.com/davetimmins/create-react-app-esri-loader/
+* https://github.com/tomwayson/esri-react-router-example
