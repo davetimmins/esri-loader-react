@@ -2,14 +2,14 @@
 
 [![npm](https://img.shields.io/npm/v/esri-loader-react.svg)](https://www.npmjs.com/package/esri-loader-react)
 
-A React component wrapper around [esri-loader](https://github.com/tomwayson/esri-loader)
+A React component wrapper around [esri-loader](https://github.com/Esri/esri-loader)
 
 ### Usage
 
 `npm install react prop-types esri-loader esri-loader-react --save`
 
 Mount the loader component to preload the Esri JS API when you will need it in your app.
-You can pass in the options that get forwarded to the [esri-loader](https://github.com/tomwayson/esri-loader) `bootstrap` function
+You can pass in the options that get forwarded to the [esri-loader](https://github.com/Esri/esri-loader) `bootstrap` function
 
 ```js
 import EsriLoader from 'esri-loader-react';
@@ -64,7 +64,7 @@ class AppMain extends React.PureComponent {
 }
 ```
 
-now you can use the normal `dojoRequire` from [esri-loader](https://github.com/tomwayson/esri-loader)
+now you can use the normal `dojoRequire` from [esri-loader](https://github.com/Esri/esri-loader)
 
 ```js
 import {dojoRequire} from "esri-loader";
