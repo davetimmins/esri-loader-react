@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import { bootstrap, isLoaded } from 'esri-loader';
 
-class EsriLoader extends React.PureComponent {
+class EsriLoader extends PureComponent {
 
   componentDidMount () {
 

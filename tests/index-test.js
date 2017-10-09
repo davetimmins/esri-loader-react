@@ -21,7 +21,7 @@ class Demo extends React.Component {
   render() {
 
     const options = {
-      url: 'https://js.arcgis.com/4.4/'
+      url: 'https://js.arcgis.com/4.5/'
     };
 
     return (
@@ -49,12 +49,6 @@ describe('EsriLoader', () => {
   afterEach(() => {
     unmountComponentAtNode(node)
   })
-
-  // it('displays a welcome message', () => {
-  //   render(<EsriLoader/>, node, () => {
-  //     expect(node.innerHTML).toBe().blank()
-  //   })
-  // })
 
   it('shows demo', () => {
     render(<Demo/>, node, () => {
