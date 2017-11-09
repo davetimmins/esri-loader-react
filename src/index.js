@@ -8,10 +8,10 @@ class EsriLoader extends PureComponent {
 
     if (!isLoaded()) {
       
-      bootstrap((error) => {
+      bootstrap((error, dojoRequire) => {
         
         if (this.props.ready) {
-          this.props.ready(error);
+          this.props.ready(error, dojoRequire);
         }
       }, this.props.options)
     }

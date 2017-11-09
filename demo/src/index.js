@@ -1,9 +1,8 @@
 import React from 'react';
 import {render} from 'react-dom';
-import { dojoRequire } from 'esri-loader';
 import EsriLoader from '../../src';
 
-const createMap = (mapContainer) => {
+const createMap = (mapContainer, dojoRequire) => {
 
   dojoRequire(['esri/Map', 'esri/views/MapView'], (Map, MapView) => { 
     new MapView({
@@ -19,7 +18,7 @@ function DemoComponent({options, ready}) {
 
   return (
     <div className="App">
-      <EsriLoader options={options} ready={() => ready(mapContainer)} />
+      <EsriLoader options={options} ready={(error, dojoRequire) => error ? console.error(error) : ready(mapContainer, dojoRequire)} />
       <div className="App-header">
         <h2>Welcome to React</h2>
       </div>
