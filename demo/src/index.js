@@ -1,31 +1,28 @@
 import React from 'react';
 import {render} from 'react-dom';
-import EsriLoader from '../../src';
+import EsriLoaderReact from '../../src';
 
-const createMap = (mapContainer, dojoRequire) => {
-
-  dojoRequire(['esri/Map', 'esri/views/MapView'], (Map, MapView) => { 
-    new MapView({
-      container: mapContainer,
-      map: new Map({basemap: 'oceans'})
-    })
-  });
-}
-
-function DemoComponent({options, ready}) {  
-
-  let mapContainer = null;
+function DemoComponent({options}) {  
 
   return (
-    <div className="App">
-      <EsriLoader options={options} ready={(error, dojoRequire) => error ? console.error(error) : ready(mapContainer, dojoRequire)} />
+    <div className="App">      
       <div className="App-header">
         <h2>Welcome to React</h2>
       </div>
       <p className="App-intro">
         To get started, edit <code>src/App.js</code> and save to reload.
       </p>
-      <div ref={node => mapContainer = node} className='map-view'></div>
+      <EsriLoaderReact 
+        options={options} 
+        modulesToLoad={['esri/Map', 'esri/views/MapView']}    
+        onReady={({loadedModules: [Map, MapView], containerNode}) => {
+          new MapView({
+            container: containerNode,
+            map: new Map({basemap: 'oceans'})
+          })
+        }}
+        onError={error => console.error(error)}
+      />
     </div>
   );  
 }
@@ -37,7 +34,6 @@ const options = {
 render(
   <DemoComponent 
     options={options} 
-    ready={createMap}
   />, 
   document.querySelector('#demo')
 );

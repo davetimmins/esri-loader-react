@@ -1,6 +1,6 @@
 {
   "name": "esri-loader-react",
-  "version": "1.1.0",
+  "version": "2.0.0-beta.1",
   "description": "A React component wrapper for esri-loader.",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -20,16 +20,16 @@
   },
   "dependencies": {},
   "peerDependencies": {
-    "esri-loader": "^1.x",
+    "esri-loader": ">=1.5.x || 2.x",
     "prop-types": "^15.x",
     "react": "15.x || 16.x"
   },
   "devDependencies": {
-    "esri-loader": "^1.4.0",
+    "esri-loader": "^1.5.0",
     "nwb": "^0.19.2",
     "prop-types": "^15.6.0",
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0"
+    "react": "^16.1.0",
+    "react-dom": "^16.1.0"
   },
   "author": "Dave Timmins <dwtimmins@outlook.com>",
   "homepage": "https://github.com/davetimmins/esri-loader-react/",

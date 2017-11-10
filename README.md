@@ -9,48 +9,17 @@ A React component wrapper around [esri-loader](https://github.com/Esri/esri-load
 `npm install react prop-types esri-loader esri-loader-react --save`
 
 Mount the loader component to preload the Esri JS API when you will need it in your app.
-You can pass in the options that get forwarded to the [esri-loader](https://github.com/Esri/esri-loader) `bootstrap` function
+You can pass in the options that get forwarded to the [esri-loader](https://github.com/Esri/esri-loader) `loadModules` function.
+
+Version 2 of this library is compatible with [esri-loader](https://github.com/Esri/esri-loader) 1.5.0 and higher.
+
+You can still use this component as a means of pre-loading the Esri JS API though it is less useful now that [esri-loader](https://github.com/Esri/esri-loader) version 1.5.0 is basically a 1-liner to do this. Instead, the main usage of this component is likely to be ensuring that the Esri JS API is ready to use and the modules you need are available and these can then be used to do something in your UI. If you don't need to auto inject a container node into your UI then set `renderMapContainer={false}`
 
 ```js
 import React from 'react';
-import EsriLoader from 'esri-loader-react';
+import EsriLoaderReact from 'esri-loader-react';
 
 class AppMain extends React.PureComponent {
-
-  render() {
-    const options = {
-      url: 'https://js.arcgis.com/4.5/',
-      dojoConfig: {},
-    };
-
-    return (
-      <div>
-        <EsriLoader options={options} />
-      </div>
-    );
-  }
-}
-```
-
-optionally you can listen for the API being `ready` to use, this will return an error if one occurs, otherwise you can use the returned `dojoRequire` directly
-
-```js
-import React from 'react';
-import EsriLoader from 'esri-loader-react';
-
-class AppMain extends React.PureComponent {
-
-  initialState = {
-    loaded: false
-  };
-  state = this.initialState;
-
-  onEsriApiLoaded = (error, dojoRequire) => {
-
-    if (!error) {
-      this.setState({loaded: true});
-    }
-  }
 
   render() {
     const options = {
@@ -59,23 +28,24 @@ class AppMain extends React.PureComponent {
 
     return (
       <div>
-        <EsriLoader options={options} ready={this.onEsriApiLoaded} />
-        {this.state.loaded ? <MapComponent /> : null}
+        <EsriLoaderReact 
+          options={options} 
+          modulesToLoad={['esri/Map', 'esri/views/MapView']}    
+          onReady={({loadedModules: [Map, MapView], containerNode}) => {
+            new MapView({
+              container: containerNode,
+              map: new Map({basemap: 'oceans'})
+            })
+          }}
+          onError={error => console.error(error)}
+        />
       </div>
     );
   }
 }
 ```
 
-or you can import `dojoRequire` from [esri-loader](https://github.com/Esri/esri-loader) elsewhere in your code
-
-```js
-import {dojoRequire} from "esri-loader";
-
-  dojoRequire(
-    ["esri/Map", "esri/views/MapView"],
-    (Map, MapView) => {
-```
+you can also still use the functions from [esri-loader](https://github.com/Esri/esri-loader) elsewhere in your code
 
 ### Build locally
 

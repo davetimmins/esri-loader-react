@@ -1,36 +1,51 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import { bootstrap, isLoaded } from 'esri-loader';
+import {loadModules} from 'esri-loader';
 
-class EsriLoader extends PureComponent {
+class EsriLoaderReact extends PureComponent {
 
   componentDidMount () {
 
-    if (!isLoaded()) {
-      
-      bootstrap((error, dojoRequire) => {
-        
-        if (this.props.ready) {
-          this.props.ready(error, dojoRequire);
+    const {modulesToLoad, options, onReady, onError} = this.props;
+   
+    loadModules(modulesToLoad ? modulesToLoad : [], options)
+      .then(loadedModules => {
+
+        if (onReady) {
+          onReady({loadedModules, containerNode: this.mapContainer});
         }
-      }, this.props.options)
-    }
-    else {
-      
-      if (this.props.ready) {
-        this.props.ready();
-      }
-    }
+      })
+      .catch(error => {
+        // handle any errors
+        if (onError) {
+          onError(error);
+        }
+      });
   }
 
   render () {
-    return null;
+
+    if (!this.props.renderMapContainer) {
+      return null;
+    }
+
+    return <div ref={node => this.mapContainer = node} className='map-view'></div>;
   }
 }
 
-EsriLoader.propTypes = {
-  options: PropTypes.object,
-  ready: PropTypes.func
+EsriLoaderReact.propTypes = {
+  renderMapContainer: PropTypes.bool,
+  modulesToLoad: PropTypes.arrayOf(PropTypes.string),
+  options: PropTypes.shape({
+    url: PropTypes.string,
+    dojoConfig: PropTypes.object
+  }),
+  onError: PropTypes.func,
+  onReady: PropTypes.func,
 };
 
-export default EsriLoader;
+EsriLoaderReact.defaultProps = {
+  renderMapContainer: true,
+};
+
+export default EsriLoaderReact;
