@@ -56,8 +56,8 @@ EsriLoaderReact.propTypes = {
     url: PropTypes.string,
     dojoConfig: PropTypes.object
   }),
-  onError: PropTypes.func, // error =>
-  onReady: PropTypes.func, // {loadedModules, containerNode (null if renderMapContainer !== true)}
+  onError: PropTypes.func, // (error, info) => also called from componentDidCatch
+  onReady: PropTypes.func, // ({loadedModules, containerNode}) => containerNode is null if renderMapContainer !== true
 };
 ```
 

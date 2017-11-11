@@ -4,6 +4,15 @@ import {loadModules} from 'esri-loader';
 
 class EsriLoaderReact extends PureComponent {
 
+  componentDidCatch(error, info) {
+
+    const {onError} = this.props;
+    
+    if (onError) {
+      onError(error, info);
+    }
+  }
+
   componentDidMount () {
 
     const {modulesToLoad, options, onReady, onError} = this.props;

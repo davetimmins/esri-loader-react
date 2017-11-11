@@ -21,7 +21,7 @@ function DemoComponent({options}) {
             map: new Map({basemap: 'oceans'})
           })
         }}
-        onError={error => console.error(error)}
+        onError={(error, info) => console.error(error)}
       />
     </div>
   );  
