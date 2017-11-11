@@ -2,21 +2,9 @@ import expect from 'expect'
 import React from 'react'
 import {render, unmountComponentAtNode} from 'react-dom'
 
-import EsriLoader from 'src/'
-
-import { dojoRequire } from 'esri-loader'
+import EsriLoaderReact from 'src/'
 
 class Demo extends React.Component {
-
-  createMap = () => {
-
-    dojoRequire(['esri/Map', 'esri/views/MapView'], (Map, MapView) => { 
-      new MapView({
-        container: this.mapContainer,
-        map: new Map({basemap: 'oceans'})
-      })
-    });
-  }
 
   render() {
 
@@ -26,20 +14,29 @@ class Demo extends React.Component {
 
     return (
       <div className="App">
-        <EsriLoader options={options} ready={this.createMap} />
         <div className="App-header">
           <h2>Welcome to React</h2>
         </div>
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
-        <div ref={node => this.mapContainer = node} className='map-view'></div>
+        <EsriLoaderReact 
+          options={options} 
+          modulesToLoad={['esri/Map', 'esri/views/MapView']}    
+          onReady={({loadedModules: [Map, MapView], containerNode}) => {
+            new MapView({
+              container: containerNode,
+              map: new Map({basemap: 'oceans'})
+            })
+          }}
+          onError={error => console.error(error)}
+        />
       </div>
     );
   }
 }
 
-describe('EsriLoader', () => {
+describe('EsriLoaderReact', () => {
   let node
 
   beforeEach(() => {

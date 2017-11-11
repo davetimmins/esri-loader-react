@@ -8,12 +8,12 @@ A React component wrapper around [esri-loader](https://github.com/Esri/esri-load
 
 `npm install react prop-types esri-loader esri-loader-react --save`
 
-Mount the loader component to preload the Esri JS API when you will need it in your app.
+Mount the loader component to load the Esri JS API when you will need it in your app.
 You can pass in the options that get forwarded to the [esri-loader](https://github.com/Esri/esri-loader) `loadModules` function.
 
 Version 2 of this library is compatible with [esri-loader](https://github.com/Esri/esri-loader) 1.5.0 and higher.
 
-You can still use this component as a means of pre-loading the Esri JS API though it is less useful now that [esri-loader](https://github.com/Esri/esri-loader) version 1.5.0 is basically a 1-liner to do this. Instead, the main usage of this component is likely to be ensuring that the Esri JS API is ready to use and the modules you need are available and these can then be used to do something in your UI. If you don't need to auto inject a container node into your UI then set `renderMapContainer={false}`
+You can still use this component as a means of pre-loading the Esri JS API though it is less useful now that [esri-loader](https://github.com/Esri/esri-loader) version 1.5.0 is basically a 1-liner to do this. Instead, the main usage of this component is likely to be ensuring that the Esri JS API is ready to use and the modules you need are available and these can then be used to do something in your UI. If you don't need to auto inject a container node into your UI then set `renderMapContainer={false}`.
 
 ```js
 import React from 'react';
@@ -27,25 +27,39 @@ class AppMain extends React.PureComponent {
     };
 
     return (
-      <div>
-        <EsriLoaderReact 
-          options={options} 
-          modulesToLoad={['esri/Map', 'esri/views/MapView']}    
-          onReady={({loadedModules: [Map, MapView], containerNode}) => {
-            new MapView({
-              container: containerNode,
-              map: new Map({basemap: 'oceans'})
-            })
-          }}
-          onError={error => console.error(error)}
-        />
-      </div>
+      <EsriLoaderReact 
+        options={options} 
+        modulesToLoad={['esri/Map', 'esri/views/MapView']}    
+        onReady={({loadedModules: [Map, MapView], containerNode}) => {
+          new MapView({
+            container: containerNode,
+            map: new Map({basemap: 'oceans'})
+          })
+        }}
+        onError={error => console.error(error)}
+      />
     );
   }
 }
 ```
 
 you can also still use the functions from [esri-loader](https://github.com/Esri/esri-loader) elsewhere in your code
+
+The component has the following properties
+
+```js
+EsriLoaderReact.propTypes = {
+  renderMapContainer: PropTypes.bool, // default is true
+  mapContainerClassName: PropTypes.string, // default is 'map-view'
+  modulesToLoad: PropTypes.arrayOf(PropTypes.string),
+  options: PropTypes.shape({
+    url: PropTypes.string,
+    dojoConfig: PropTypes.object
+  }),
+  onError: PropTypes.func, // error =>
+  onReady: PropTypes.func, // {loadedModules, containerNode (null if renderMapContainer !== true)}
+};
+```
 
 ### Build locally
 

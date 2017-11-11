@@ -16,7 +16,7 @@ class EsriLoaderReact extends PureComponent {
         }
       })
       .catch(error => {
-        // handle any errors
+        
         if (onError) {
           onError(error);
         }
@@ -28,7 +28,7 @@ class EsriLoaderReact extends PureComponent {
     const {renderMapContainer, mapContainerClassName, children} = this.props;
 
     if (!this.props.renderMapContainer) {
-      return null;
+      return this.props.children;
     }
 
     return (
@@ -40,15 +40,15 @@ class EsriLoaderReact extends PureComponent {
 }
 
 EsriLoaderReact.propTypes = {
-  renderMapContainer: PropTypes.bool,
-  mapContainerClassName: PropTypes.string,
+  renderMapContainer: PropTypes.bool, // default is true
+  mapContainerClassName: PropTypes.string, // default is 'map-view'
   modulesToLoad: PropTypes.arrayOf(PropTypes.string),
   options: PropTypes.shape({
     url: PropTypes.string,
     dojoConfig: PropTypes.object
   }),
-  onError: PropTypes.func,
-  onReady: PropTypes.func,
+  onError: PropTypes.func, // error =>
+  onReady: PropTypes.func, // {loadedModules, containerNode (null if renderMapContainer !== true)}
 };
 
 EsriLoaderReact.defaultProps = {
