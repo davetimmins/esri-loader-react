@@ -1,6 +1,6 @@
 {
   "name": "esri-loader-react",
-  "version": "2.0.0-beta.4",
+  "version": "2.0.0",
   "description": "A React component wrapper for esri-loader.",
   "main": "lib/index.js",
   "module": "es/index.js",

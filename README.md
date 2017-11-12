@@ -13,7 +13,7 @@ You can pass in the options that get forwarded to the [esri-loader](https://gith
 
 Version 2 of this library is compatible with [esri-loader](https://github.com/Esri/esri-loader) 1.5.0 and higher.
 
-You can still use this component as a means of pre-loading the Esri JS API though it is less useful now that [esri-loader](https://github.com/Esri/esri-loader) version 1.5.0 is basically a 1-liner to do this. Instead, the main usage of this component is likely to be ensuring that the Esri JS API is ready to use and the modules you need are available and these can then be used to do something in your UI. If you don't need to auto inject a container node into your UI then set `renderMapContainer={false}`.
+You can still use this component as a means of pre-loading the Esri JS API though it is less useful now that [esri-loader](https://github.com/Esri/esri-loader) version 1.5.0 is basically a 1-liner to do this. Instead, the main usage of this component is likely to be ensuring that the Esri JS API is ready to use and the modules you need are available and these can then be used to do something in your UI. If you don't need to auto inject a container node into your UI then set `renderMapContainer={false}`. You can pass through children to be rendered too.
 
 ```js
 import React from 'react';
@@ -36,7 +36,6 @@ class AppMain extends React.PureComponent {
             map: new Map({basemap: 'oceans'})
           })
         }}
-        onError={error => console.error(error)}
       />
     );
   }
@@ -56,7 +55,7 @@ EsriLoaderReact.propTypes = {
     url: PropTypes.string,
     dojoConfig: PropTypes.object
   }),
-  onError: PropTypes.func, // (error, info) => also called from componentDidCatch
+  onError: PropTypes.func, // (error, info) => also called from componentDidCatch, default is onError: (error, info) => console.error(error),
   onReady: PropTypes.func, // ({loadedModules, containerNode}) => containerNode is null if renderMapContainer !== true
 };
 ```

@@ -14,14 +14,20 @@ function DemoComponent({options}) {
       </p>
       <EsriLoaderReact 
         options={options} 
-        modulesToLoad={['esri/Map', 'esri/views/MapView']}    
-        onReady={({loadedModules: [Map, MapView], containerNode}) => {
-          new MapView({
+        modulesToLoad={['esri/Map', 'esri/views/MapView', 'esri/widgets/ScaleBar']}    
+        onReady={({loadedModules: [Map, MapView, ScaleBar], containerNode}) => {
+
+          let view = new MapView({
             container: containerNode,
-            map: new Map({basemap: 'oceans'})
+            map: new Map({basemap: 'streets'})
           })
+          
+          view.ui.add(new ScaleBar({
+            view: view
+          }), {
+            position: "bottom-left"
+          });
         }}
-        onError={(error, info) => console.error(error)}
       />
     </div>
   );  
