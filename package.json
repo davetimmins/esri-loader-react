@@ -5,12 +5,12 @@
   "main": "lib/index.js",
   "module": "es/index.js",
   "files": [
-    "css",
     "es",
     "lib",
     "umd"
   ],
   "scripts": {
+    "prepublish": "nwb build-react-component",
     "build": "nwb build-react-component",
     "clean": "nwb clean-module && nwb clean-demo",
     "start": "nwb serve-react-demo",
@@ -26,10 +26,12 @@
   },
   "devDependencies": {
     "esri-loader": "^1.5.0",
+    "expect": "^21.2.1",
     "nwb": "^0.19.2",
     "prop-types": "^15.6.0",
-    "react": "^16.1.0",
-    "react-dom": "^16.1.0"
+    "react": "^16.1.1",
+    "react-dom": "^16.1.1",
+    "react-test-renderer": "^16.1.1"
   },
   "author": "Dave Timmins <dwtimmins@outlook.com>",
   "homepage": "https://github.com/davetimmins/esri-loader-react/",
