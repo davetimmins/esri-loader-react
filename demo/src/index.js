@@ -17,7 +17,7 @@ function DemoComponent({options}) {
           let view = new MapView({
             container: containerNode,
             map: new Map({basemap: 'streets'})
-          })
+          });
           
           view.ui.add(new ScaleBar({
             view: view

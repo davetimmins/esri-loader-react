@@ -1,5 +1,7 @@
 # esri-loader-react
 
+[![Build Status](https://travis-ci.org/davetimmins/esri-loader-react.svg?branch=master)](https://travis-ci.org/davetimmins/esri-loader-react)
+
 [![npm](https://img.shields.io/npm/v/esri-loader-react.svg)](https://www.npmjs.com/package/esri-loader-react)
 
 A React component wrapper around [esri-loader](https://github.com/Esri/esri-loader)
@@ -13,13 +15,13 @@ You can pass in the options that get forwarded to the [esri-loader](https://gith
 
 Version 2 of this library is compatible with [esri-loader](https://github.com/Esri/esri-loader) 1.5.0 and higher.
 
-You can still use this component as a means of pre-loading the Esri JS API though it is less useful now that [esri-loader](https://github.com/Esri/esri-loader) version 1.5.0 is basically a 1-liner to do this. Instead, the main usage of this component is likely to be ensuring that the Esri JS API is ready to use and the modules you need are available and these can then be used to do something in your UI. If you don't need to auto inject a container node into your UI then set `renderMapContainer={false}`. You can pass through children to be rendered too.
+You can still use this component as a means of pre-loading the Esri JS API though it is less useful now that [esri-loader](https://github.com/Esri/esri-loader) version 1.5.0 onward is basically a 1-liner to do this. Instead, the main usage of this component is likely to be ensuring that the Esri JS API is ready to use and the modules you need are available and these can then be used to do something in your UI with a dom node mounted for you to use. If you don't need to auto inject a container node into your UI then set `renderMapContainer={false}`. You can pass through children to be rendered too.
 
 ```js
-import React from 'react';
+import React, {PureComponent} from 'react';
 import EsriLoaderReact from 'esri-loader-react';
 
-class AppMain extends React.PureComponent {
+class AppMain extends PureComponent {
 
   render() {
     const options = {
@@ -34,7 +36,7 @@ class AppMain extends React.PureComponent {
           new MapView({
             container: containerNode,
             map: new Map({basemap: 'oceans'})
-          })
+          });
         }}
       />
     );
@@ -42,7 +44,7 @@ class AppMain extends React.PureComponent {
 }
 ```
 
-you can also still use the functions from [esri-loader](https://github.com/Esri/esri-loader) elsewhere in your code
+you can still use the functions from [esri-loader](https://github.com/Esri/esri-loader) elsewhere in your code as needed.
 
 The component has the following properties
 
@@ -64,6 +66,8 @@ EsriLoaderReact.propTypes = {
 
 1. `npm install`
 2. `npm run build`
+
+you can run the demo using `npm start`
 
 ### Examples
 

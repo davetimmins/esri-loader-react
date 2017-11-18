@@ -1,6 +1,6 @@
 {
   "name": "esri-loader-react",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A React component wrapper for esri-loader.",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -25,9 +25,9 @@
     "react": "15.x || 16.x"
   },
   "devDependencies": {
-    "esri-loader": "^1.5.0",
+    "esri-loader": "^1.5.2",
     "expect": "^21.2.1",
-    "nwb": "^0.19.2",
+    "nwb": "^0.20.0",
     "prop-types": "^15.6.0",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
