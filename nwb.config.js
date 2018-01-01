@@ -7,7 +7,7 @@ module.exports = {
       externals: {
         'esri-loader': 'EsriLoader',
         'prop-types': 'PropTypes',
-        react: 'React'
+        react: 'React',
       }
     }
   },

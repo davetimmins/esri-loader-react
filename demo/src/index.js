@@ -1,13 +1,47 @@
 import React from 'react';
 import {render} from 'react-dom';
+import SyntaxHighlighter, { registerLanguage } from "react-syntax-highlighter/prism-light";
+import jsx from 'react-syntax-highlighter/languages/prism/jsx';
+import prism from 'react-syntax-highlighter/styles/prism/prism'; 
+
 import EsriLoaderReact from '../../src';
+import {version} from '../../package.json';
+
+registerLanguage('jsx', jsx);
 
 function DemoComponent({options}) {  
+
+  const codeString = " \
+import React, {PureComponent} from 'react'; \n \
+import EsriLoaderReact from 'esri-loader-react'; \n \
+\n \
+class AppMain extends PureComponent { \n \
+  \n \
+  render() { \n \
+    const options = { \n \
+      url: 'https://js.arcgis.com/4.6/' \n \
+    }; \n \
+    \n \
+    return ( \n \
+      <EsriLoaderReact \n \
+        options={options} \n \
+        modulesToLoad={['esri/Map', 'esri/views/MapView']} \n \
+        onReady={({loadedModules: [Map, MapView], containerNode}) => { \n \
+          new MapView({ \n \
+            container: containerNode, \n \
+            map: new Map({basemap: 'streets'}) \n \
+          }); \n \
+        }} \n \
+      /> \n \
+    ); \n \
+  } \n \
+} \
+  ";
 
   return (
     <div className="App">      
       <div className="App-header">
-        <h2>Welcome to Esri-Loader-React</h2>
+        <h2>Welcome to Esri-Loader-React v{version}</h2>
       </div>
       <EsriLoaderReact 
         options={options} 
@@ -26,12 +60,13 @@ function DemoComponent({options}) {
           });
         }}
       />
+      <SyntaxHighlighter language='jsx' showLineNumbers={true} style={prism}>{codeString}</SyntaxHighlighter>       
     </div>
   );  
 }
 
 const options = {
-  url: 'https://js.arcgis.com/4.5/'
+  url: 'https://js.arcgis.com/4.6/'
 };
 
 render(

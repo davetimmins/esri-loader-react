@@ -36,7 +36,7 @@ class EsriLoaderReact extends PureComponent {
 
     const {renderMapContainer, mapContainerClassName, children} = this.props;
 
-    if (!this.props.renderMapContainer) {
+    if (!renderMapContainer) {
       return children;
     }
 
