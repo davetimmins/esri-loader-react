@@ -12,36 +12,34 @@ registerLanguage('jsx', jsx);
 function DemoComponent({options}) {  
 
   const codeString = " \
-import React, {PureComponent} from 'react'; \n \
+import React from 'react'; \n \
 import EsriLoaderReact from 'esri-loader-react'; \n \
 \n \
-class AppMain extends PureComponent { \n \
+function DemoComponent(props) { \n \
   \n \
-  render() { \n \
-    const options = { \n \
-      url: 'https://js.arcgis.com/4.6/' \n \
-    }; \n \
-    \n \
-    return ( \n \
-      <EsriLoaderReact \n \
-        options={options} \n \
-        modulesToLoad={['esri/Map', 'esri/views/MapView']} \n \
-        onReady={({loadedModules: [Map, MapView], containerNode}) => { \n \
-          new MapView({ \n \
-            container: containerNode, \n \
-            map: new Map({basemap: 'streets'}) \n \
-          }); \n \
-        }} \n \
-      /> \n \
-    ); \n \
-  } \n \
+  const options = { \n \
+    url: 'https://js.arcgis.com/4.6/' \n \
+  }; \n \
+  \n \
+  return ( \n \
+    <EsriLoaderReact \n \
+      options={options} \n \
+      modulesToLoad={['esri/Map', 'esri/views/MapView']} \n \
+      onReady={({loadedModules: [Map, MapView], containerNode}) => { \n \
+        new MapView({ \n \
+          container: containerNode, \n \
+          map: new Map({basemap: 'streets'}) \n \
+        }); \n \
+      }} \n \
+    /> \n \
+  ); \n \
 } \
   ";
 
   return (
     <div className="App">      
       <div className="App-header">
-        <h2>Welcome to Esri-Loader-React v{version}</h2>
+        <h2>Esri-Loader-React v{version}</h2>
       </div>
       <EsriLoaderReact 
         options={options} 
@@ -50,7 +48,9 @@ class AppMain extends PureComponent { \n \
 
           let view = new MapView({
             container: containerNode,
-            map: new Map({basemap: 'streets'})
+            map: new Map({basemap: 'streets'}),
+            zoom: 4,
+            center: [174, -42],
           });
           
           view.ui.add(new ScaleBar({

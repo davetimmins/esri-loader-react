@@ -24,14 +24,14 @@
     "react": "15.x || 16.x"
   },
   "devDependencies": {
-    "esri-loader": "^1.6.0",
+    "esri-loader": "^1.6.2",
     "expect": "^21.2.1",
     "nwb": "^0.20.0",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-test-renderer": "^16.2.0",
-    "react-syntax-highlighter": "^6.1.1"
+    "react-syntax-highlighter": "^6.1.1",
+    "react-test-renderer": "^16.2.0"
   },
   "author": "Dave Timmins <dwtimmins@outlook.com>",
   "homepage": "https://github.com/davetimmins/esri-loader-react/",
