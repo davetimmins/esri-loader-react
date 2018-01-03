@@ -6,11 +6,11 @@
 
 A React component wrapper around [esri-loader](https://github.com/Esri/esri-loader)
 
-> Version 2 of this library is compatible with [esri-loader](https://github.com/Esri/esri-loader) 1.5.0 and higher.
+> **Version 2.x of this library is compatible with [esri-loader](https://github.com/Esri/esri-loader) 1.5.0 and higher.**
 
 ### Usage
 
-`npm install react prop-types esri-loader esri-loader-react`
+`npm install react react-dom prop-types esri-loader esri-loader-react`
 
 Mount the loader component to load the [Esri JS API](https://developers.arcgis.com/javascript/) when you will need it in your app.
 You can pass in the options that get forwarded to the [esri-loader](https://github.com/Esri/esri-loader) `loadModules` function.
