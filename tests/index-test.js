@@ -1,31 +1,32 @@
 import React from 'react'
 import {render, unmountComponentAtNode} from 'react-dom'
 import TestRenderer from 'react-test-renderer';
-import expect, { spyOn } from 'expect';
+import expect, { spyOn, done } from 'expect';
+import {configure, shallow, mount} from 'enzyme'
+import Adapter from 'enzyme-adapter-react-16'
+
+configure({ adapter: new Adapter() })
 
 import EsriLoaderReact from 'src/';
 
-describe('EsriLoaderReact', () => {
+describe('<EsriLoaderReact />', () => {
   let testRenderer;
   let testInstance;
 
   let context = {
-    onReadyCallback: function ({loadedModules, containerNode}) {},
+    onReadyCallback: function ({loadedModules, containerNode}) { return new Promise().resolve()},
     onErrorCallback: function (error, info) {},
   };
-
-  const options = {
-    url: 'https://js.arcgis.com/4.5/'
-  };
   
+  let a;
+
   beforeEach(() => {
     
-    spyOn(context, 'onReadyCallback');
+    a = spyOn(context, 'onReadyCallback');
     spyOn(context, 'onErrorCallback');
 
     testRenderer = TestRenderer.create(
       <EsriLoaderReact 
-        options={options} 
         modulesToLoad={['esri/Map', 'esri/views/MapView']}    
         onReady={context.onReadyCallback}
       >
@@ -45,8 +46,14 @@ describe('EsriLoaderReact', () => {
     expect(testInstance.props.children).toContain(<h3>blah blah</h3>);  
   });
 
-  // it('should have called onReady', function () {
-  //   expect(context.onReadyCallback).toHaveBeenCalled();
+  // it('should have called onReady', async () => {
+  //   //context.onReadyCallback.then(() => done());
+
+  //   const wrapper = shallow(<EsriLoaderReact />)
+
+  //   await wrapper.instance().componentDidMount()
+
+  //   expect(a).toHaveBeenCalled();    
   // });
 
   it('should not have called onError', function () {

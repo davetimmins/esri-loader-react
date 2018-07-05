@@ -18,7 +18,7 @@ import EsriLoaderReact from 'esri-loader-react'; \n \
 function DemoComponent(props) { \n \
   \n \
   const options = { \n \
-    url: 'https://js.arcgis.com/4.6/' \n \
+    url: 'https://js.arcgis.com/4.7/' \n \
   }; \n \
   \n \
   return ( \n \
@@ -39,7 +39,7 @@ function DemoComponent(props) { \n \
   return (
     <div className="App">      
       <div className="App-header">
-        <h2>Esri-Loader-React v{version}</h2>
+        <h2>{`Esri-Loader-React v${version}`}</h2>
       </div>
       <EsriLoaderReact 
         options={options} 
@@ -66,7 +66,7 @@ function DemoComponent(props) { \n \
 }
 
 const options = {
-  url: 'https://js.arcgis.com/4.6/'
+  url: 'https://js.arcgis.com/4.8/'
 };
 
 render(
