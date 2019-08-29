@@ -18,7 +18,7 @@ import EsriLoaderReact from 'esri-loader-react'; \n \
 function DemoComponent(props) { \n \
   \n \
   const options = { \n \
-    url: 'https://js.arcgis.com/4.7/' \n \
+    url: 'https://js.arcgis.com/4.12/' \n \
   }; \n \
   \n \
   return ( \n \
@@ -28,7 +28,7 @@ function DemoComponent(props) { \n \
       onReady={({loadedModules: [Map, MapView], containerNode}) => { \n \
         new MapView({ \n \
           container: containerNode, \n \
-          map: new Map({basemap: 'streets'}) \n \
+          map: new Map({basemap: 'streets-vector'}) \n \
         }); \n \
       }} \n \
     /> \n \
@@ -48,13 +48,14 @@ function DemoComponent(props) { \n \
 
           let view = new MapView({
             container: containerNode,
-            map: new Map({basemap: 'streets'}),
+            map: new Map({basemap: 'streets-vector'}),
             zoom: 4,
             center: [174, -42],
           });
           
           view.ui.add(new ScaleBar({
-            view: view
+            view: view,
+            unit: 'metric'
           }), {
             position: "bottom-left"
           });
@@ -66,7 +67,7 @@ function DemoComponent(props) { \n \
 }
 
 const options = {
-  url: 'https://js.arcgis.com/4.8/'
+  url: 'https://js.arcgis.com/4.12/'
 };
 
 render(
